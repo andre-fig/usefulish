@@ -1,0 +1,12 @@
+{
+  "name": "@usefulish/smartcron",
+  "version": "0.1.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@nestjs/schedule": "^3.0.0"
+  }
+}
