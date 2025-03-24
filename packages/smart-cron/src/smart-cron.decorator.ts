@@ -3,7 +3,12 @@ import { applyDecorators } from '@nestjs/common';
 import { SmartCronOptions, ALLOWED_MINUTES } from './smart-cron.interface';
 
 export function SmartCron(options: SmartCronOptions) {
-  const { minutes, fromHour = 0, toHour = 23, weekdaysOnly = false } = options;
+  const {
+    intervalInMinutes,
+    fromHour = 0,
+    toHour = 23,
+    weekdaysOnly = false,
+  } = options;
 
   if (fromHour > toHour) {
     throw new Error(
@@ -11,9 +16,9 @@ export function SmartCron(options: SmartCronOptions) {
     );
   }
 
-  const offset = ALLOWED_MINUTES.indexOf(minutes);
+  const offset = ALLOWED_MINUTES.indexOf(intervalInMinutes);
 
-  const minutePart = `${offset}-59/${minutes}`;
+  const minutePart = `${offset}-59/${intervalInMinutes}`;
   const hourPart = `${fromHour}-${toHour}`;
   const dayOfWeekPart = weekdaysOnly ? '1-5' : '*';
 

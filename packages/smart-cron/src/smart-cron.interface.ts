@@ -14,7 +14,7 @@ export type Hour0To23 = NumberRange<0, 24>;
 export type Hour1To23 = Exclude<Hour0To23, 0>;
 
 export interface SmartCronOptions {
-  minutes: AllowedMinutes;
+  intervalInMinutes: AllowedMinutes;
   fromHour?: Hour0To23;
   toHour?: Hour1To23;
   weekdaysOnly?: boolean;
