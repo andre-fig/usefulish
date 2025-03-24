@@ -7,6 +7,10 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@nestjs/schedule": "^3.0.0"
+    "@nestjs/common": "^11.0.12",
+    "@nestjs/schedule": "^3.0.4"
+  },
+  "devDependencies": {
+    "depcheck": "^1.4.7"
   }
 }
