@@ -1,16 +1,43 @@
 {
   "name": "@usefulish/smartcron",
   "version": "0.1.2",
+  "description": "Declarative and safe cron decorator for NestJS with UTC offset support.",
+  "keywords": [
+    "nestjs",
+    "cron",
+    "decorator",
+    "scheduler",
+    "utc",
+    "smartcron"
+  ],
+  "license": "MIT",
+  "author": "André Figueiredo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andre-fig/usefulish"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "check": "depcheck"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.12",
     "@nestjs/schedule": "^3.0.4"
   },
   "devDependencies": {
-    "depcheck": "^1.4.7"
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
