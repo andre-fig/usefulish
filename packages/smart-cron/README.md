@@ -30,12 +30,14 @@ import { SmartCron } from '@usefulish/smartcron';
 @SmartCron({
   intervalInMinutes: 13,
   fromHour: 8,
-  toHour: 18,
+  toHour: 17,
+  fromMinute: 5,
+  toMinute: 50,
   weekdaysOnly: true,
   timezone: -3,
 })
 handleJob() {
-  // Runs every 13 minutes from 08:00 to 18:59, Monday to Friday, in UTC-3
+  // Runs every 13 minutes from 08:05 to 17:50, Monday to Friday, in UTC-3
 }
 ```
 
@@ -43,13 +45,15 @@ handleJob() {
 
 ## Available Options
 
-| Option              | Type             | Required | Default | Description                                                         |
-| ------------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------- |
-| `intervalInMinutes` | `AllowedMinutes` | ✅       | —       | Interval in minutes. Must be one of the allowed values.             |
-| `fromHour`          | `Hour`           | ❌       | `0`     | Start hour (inclusive).                                             |
-| `toHour`            | `Hour`           | ❌       | `23`    | End hour (inclusive).                                               |
-| `weekdaysOnly`      | `boolean`        | ❌       | `false` | Limits execution to weekdays (Mon–Fri) if true.                     |
-| `timezone`          | `UTCOffset`      | ❌       | `0`     | UTC offset (e.g., `-3` for UTC-3). Affects CRON scheduling context. |
+| Option              | Type             | Required | Default | Description                                                                            |
+| ------------------- | ---------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `intervalInMinutes` | `AllowedMinutes` | ✅       | —       | Interval in minutes. Must be one of the allowed values.                                |
+| `fromHour`          | `Hour`           | ❌       | `0`     | Start hour (inclusive).                                                                |
+| `toHour`            | `Hour`           | ❌       | `23`    | End hour (inclusive). If lower than `fromHour`, range is treated as crossing midnight. |
+| `fromMinute`        | `Minute`         | ❌       | `0`     | Start minute (inclusive). Only applies to the first hour of the range.                 |
+| `toMinute`          | `Minute`         | ❌       | `59`    | End minute (inclusive). Only applies to the last hour of the range.                    |
+| `weekdaysOnly`      | `boolean`        | ❌       | `false` | Limits execution to weekdays (Mon–Fri) if true.                                        |
+| `timezone`          | `UTCOffset`      | ❌       | `0`     | UTC offset (e.g., `-3` for UTC-3). Affects CRON scheduling context.                    |
 
 ---
 
@@ -86,6 +90,7 @@ import {
   SmartCronOptions,
   AllowedMinutes,
   Hour,
+  Minute,
   UTCOffset,
 } from '@usefulish/smartcron';
 ```
